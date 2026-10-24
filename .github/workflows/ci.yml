@@ -38,4 +38,4 @@ jobs:
       - name: Delete old container
         run: docker rm -f cicd-pipeline-container
       - name: Run docker container
-        run: docker run -d -p 8080:8080 -name cicd-pipeline-container velizweb/cicd-pipeline
+        run: docker run -d -p 8080:8080 --name cicd-pipeline-container velizweb/cicd-pipeline
