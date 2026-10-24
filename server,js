@@ -1,7 +1,7 @@
 import express from 'express'; // Sintaxis ES2015
 
 const app = express();
-const PORT = 3000;
+const PORT = 8080;
 
 // Ruta base usando una función flecha
 app.get('/', (req, res) => {
