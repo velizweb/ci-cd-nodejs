@@ -22,5 +22,6 @@ jobs:
     
     - name: Build the Docker image 
       run: docker build -t cicd-pipeline .
+      
     - name: Push to DockerHub
       run: docker push velizweb/cicd-pipeline:latest
