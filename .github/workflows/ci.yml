@@ -20,15 +20,9 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     
-    - name: Configurar Docker Buildx
-      uses: docker/setup-buildx-action@v3
+    - name: Build the Docker image 
+      run: docker build -t cicd-pipeline .
 
-    - name: Construir y subir imagen a Docker Hub
-      uses: docker/build-push-action@v5
-      with:
-        context: .
-        file: ./Dockerfile
-        push: true
-        tags: |
-          ${{ secrets.DOCKER_USERNAME }}/cicd-pipeline:latest
-          ${{ secrets.DOCKER_USERNAME }}/cicd-pipeline:${{ github.sha }}
+    - name: Push to DockerHub
+      run: docker push ${{secrets.DOCKER_USERNAME}}/cicd-pipeline:latest
+    
